@@ -19,7 +19,7 @@ public class Battleship {
 	         System.arraycopy(initialGrid[i], 0, finalGrid[i], 0, finalGrid[i].length);
 	      }
 	     	
-	    System.out.println(Arrays.deepToString(finalGrid));
+	    //System.out.println(Arrays.deepToString(finalGrid));
 	}
 	
 	// place ships in grid
@@ -82,21 +82,21 @@ public class Battleship {
 		System.out.println("Game 1");
 	    shipSearch.horizontalSweepStrtegy(grid_2);	// horizontal sweep search output for game 1
 		shipSearch.randomSearch(grid_2);			// random search output for game 1
-		//shipSearch.strategicSearch(grid_2);		// Strategic Search output for game 1
+		shipSearch.strategicSearch(grid_2);		// Strategic Search output for game 1
 		System.out.println();						// blank line
 		
 // Game 2 output
 		System.out.println("Game 2");
 		shipSearch.horizontalSweepStrtegy(grid_3);	// horizontal sweep search output for game 2
 		shipSearch.randomSearch(grid_3);			// random search output for game 2
-		//shipSearch.strategicSearch(grid_3); 		// Strategic Search output for game 2
+		shipSearch.strategicSearch(grid_3); 		// Strategic Search output for game 2
 		System.out.println();						// blank line
 
 // Game 3 output
 		System.out.println("Game 3");				
 		shipSearch.horizontalSweepStrtegy(grid_4);	// horizontal sweep search output for game 3
 		shipSearch.randomSearch(grid_4);			// random search output for game 3
-		//shipSearch.strategicSearch(grid_4);		// Strategic Search output for game 3
+		shipSearch.strategicSearch(grid_4);		// Strategic Search output for game 3
 		System.out.println();						// blank line
 	}
 

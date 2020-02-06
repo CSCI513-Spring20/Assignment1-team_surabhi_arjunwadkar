@@ -50,7 +50,6 @@ public class battleshipSearch {
 		int carr = 0;						// carrier
 		int subM =0;						// submarine
 		Random rand =  new Random();
-		//int[][] result = new int[grid.length][grid.length];
 		while(c!=2) {
 		int r1 = rand.nextInt(24);			// assign x coordinate randomly 
 		int r2 = rand.nextInt(24);			// assign y coordinate randomly 
@@ -85,38 +84,27 @@ public class battleshipSearch {
 }
 	
 // Strategic Search Strategy
-/*public int strategicSearch(/*int[][] grid) {
+public void strategicSearch(int[][] grid) {
 	System.out.println("Strategy: Strategic Search");
 	
-	int numofHits = 0;
-	int numofMoves = 0;
-	int [][] chechArray = new int [25][25];
+
 	
-	for (int row=0; row<25; row++) {
-		for(int col=0; col<25;col++) {
-			checkArray[row][col] = 0;
-		}
-	}
-	
-	for(int i=0; i<)
-	
-	
-    /*int c = 1;
+    int c = 1;
 	int cells = 1;
 	for(int i=0;i<25;i++) {
 	for(int j=0;j<25;j++) {
 	if(grid[i][j] != 0) {
 	c = shipSearch(i,j,grid,c);
-	System.out.println(c);
 	c++;
+	System.out.println("Found carrier at "+ "("+i +","+ j+") to ("+ i +","+ j+")"); //carrier
+	System.out.println("Found submarine at "+ "("+i +","+ j+") to ("+i +","+ j+")"); // submarine
 	}
-	if(c==8) break;
+	if(c==8)
+		break;
 	cells++;
 	}
 	}
-	//System.out.println(cells); //carrier
-	//System.out.println(cells); // sub
-	System.out.println(cells);
+	System.out.println("Number of searches: "+ cells);
 	//return cells;
 	}
 public static int shipSearch(int i,int j,int[][] grid,int c) {
@@ -161,11 +149,6 @@ public static int shipSearch(int i,int j,int[][] grid,int c) {
 			else if (i<2 && j<2) {
 				if(grid[i][j+1] != 0) {
 					c++;
-					//System.out.println("cells"+i+","+(j+1)+"c is "+c);
-					//System.out.println(c);
-					
-					//System.out.println(c);
-					//System.out.println("entered");
 					grid[i][j+1] = 0;
 				}
 				if(grid[i+1][j] != 0) {
@@ -180,6 +163,5 @@ public static int shipSearch(int i,int j,int[][] grid,int c) {
 			}
 	return c;
 	}
-*/
 		
 }
