@@ -1,0 +1,215 @@
+import java.util.Random;
+public class battleshipSearch {
+	
+	// Horizontal Sweep Search Strategy	
+	public void horizontalSweepStrtegy(int[][] grid) {	
+		System.out.println("Strategy: Horizontal Sweep");
+		int total_searches = 1;				// number of searches
+		int a = 0;							//
+		int b = 0;
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid.length;j++) {
+				if (grid[i][j] != 0) {
+	                if (grid[i][j] == 1 & grid[i][j+4] ==1) {
+	                	b = j+4;
+	                	// print carrier coordinates
+	                	System.out.println("Found Carrier at "+ "("+i +","+ j+") to ("+i +","+ b+")");
+	                	a++;
+	                }
+	                else if(grid[i][j] == 2 & grid[i][j+2] ==2) {
+	                	b =j+2;
+	                	// print submarine coordinate
+	                	System.out.println("Found Submarine at "+ "("+i +","+ j+") to ("+i +","+ b+")");
+	                	a++;
+	          
+	                	
+	                }
+				
+				
+				}
+				
+				
+				
+				total_searches++;		// increment number after each search
+				
+				// print number of cells searched
+				if (a==2) {
+					System.out.println("Number of cells searched "+ total_searches);
+					a++;
+					j = 50;
+					i = 50;
+				}
+				
+			}
+			
+			
+		}
+		if(a==1) {
+			total_searches--;
+			
+			System.out.println("Number of cells searched "+ total_searches);
+		}
+		
+		
+	}
+
+	// Random Search Strategy
+	public void randomSearch(int[][] grid) {
+		System.out.println("Strategy: Random Search");
+		int total_searches_1 = 1;			// total number of searches
+		int c =0;							// count
+		int carr = 0;						// carrier
+		int subM =0;						// submarine
+		Random rand =  new Random();
+		//int[][] result = new int[grid.length][grid.length];
+		while(c!=2) {
+		int r1 = rand.nextInt(24);			// 
+		int r2 = rand.nextInt(24);
+		int i = r1+4;
+		int j =r2+4;
+		if ((i <25) & (j <25)&(carr==0)) {
+		if((grid[r1][r2]==1 & grid[r1][r2+4]==1)|(grid[r1][r2]==1 & grid[r1+4][r2]==1)) {
+			c++;
+			int k =0;
+			k =r2+4;
+			// print carrier coordinates
+			System.out.println("Found carrier at "+ "("+r1 +","+ r2+") to ("+r1 +","+ k+")");
+			carr++;
+			
+			
+			
+		}
+		}
+		i = r1+2;
+		j =r2+2;
+		if ((i <25) & (j <25)&(subM==0)) {
+		if((grid[r1][r2]==2 & grid[r1][r2+2]==2)|(grid[r1][r2]==2 & grid[r1+2][r2]==2)) {
+			c++;
+			int k = 0;
+			k =r2+2;
+			// print submarine coordinates
+			System.out.println("Found submarine at "+ "("+r1 +","+ r2+") to ("+r1 +","+ k+")");
+			subM++;
+			
+			
+		}
+		}
+		total_searches_1++;
+	}
+		/*for (int p = 0; p < grid.length; p++) 
+		{
+			for (int q = 0; q < grid.length; q++) 
+			{
+				if(result[p][q] == 1)
+					carrierCoord.add(String.valueOf("("+p+","+q+")"));
+				else if(result[p][q] == 2)
+					submarineCoord.add(String.valueOf("("+p+","+q+")"));
+					
+			}
+		}*/
+		System.out.println("Number of cells Searched:"+total_searches_1);
+		//new PrintResult(carrierCoord,submarineCoord);
+		// print number of cells searched
+	//System.out.println("Number of cells searched "+ total_searches_1);
+
+}
+	
+// Strategic Search Strategy
+/*public int strategicSearch(/*int[][] grid) {
+	System.out.println("Strategy: Strategic Search");
+	
+	int numofHits = 0;
+	int numofMoves = 0;
+	int [][] chechArray = new int [25][25];
+	
+	for (int row=0; row<25; row++) {
+		for(int col=0; col<25;col++) {
+			checkArray[row][col] = 0;
+		}
+	}
+	
+	for(int i=0; i<)
+	
+	
+    /*int c = 1;
+	int cells = 1;
+	for(int i=0;i<25;i++) {
+	for(int j=0;j<25;j++) {
+	if(grid[i][j] != 0) {
+	c = shipSearch(i,j,grid,c);
+	System.out.println(c);
+	c++;
+	}
+	if(c==8) break;
+	cells++;
+	}
+	}
+	//System.out.println(cells); //carrier
+	//System.out.println(cells); // sub
+	System.out.println(cells);
+	//return cells;
+	}
+public static int shipSearch(int i,int j,int[][] grid,int c) {
+	
+	if( i>=2 && j>=2 && i<24 && j<24) {
+	
+
+		if(grid[i-1][j-1] != 0) {
+			c++;
+			grid[i-1][j-1] = 0;
+		}
+		if(grid[i-1][j] != 0) {
+			c++;
+			grid[i-1][j] = 0;
+		}
+		if(grid[i-1][j+1] != 0) {
+			c++;
+			grid[i-1][j+1] = 0;
+		}
+		if(grid[i][j-1] != 0) {
+			c++;
+			grid[i][j-1] = 0;
+		}
+		if(grid[i][j+1] != 0) {
+			c++;
+			grid[i][j+1] = 0;
+		}
+		if(grid[i+1][j-1] != 0) {
+			c++;
+			grid[i+1][j-1] = 0;
+		}
+		if(grid[i+1][j] != 0) {
+			c++;
+			grid[i+1][j] = 0;
+		}
+		if(grid[i+1][j+1] != 0) {
+			c++; 
+			grid[i+1][j+1] = 0;
+		}
+			
+		}
+			else if (i<2 && j<2) {
+				if(grid[i][j+1] != 0) {
+					c++;
+					//System.out.println("cells"+i+","+(j+1)+"c is "+c);
+					//System.out.println(c);
+					
+					//System.out.println(c);
+					//System.out.println("entered");
+					grid[i][j+1] = 0;
+				}
+				if(grid[i+1][j] != 0) {
+					c++;
+					grid[i+1][j] = 0;
+				}
+				if(grid[i+1][j+1] != 0) {
+					c++; 
+					grid[i+1][j+1] = 0;
+				}
+				
+			}
+	return c;
+	}
+*/
+		
+}
