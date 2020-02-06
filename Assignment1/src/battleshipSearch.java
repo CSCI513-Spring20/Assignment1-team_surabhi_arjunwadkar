@@ -5,31 +5,24 @@ public class battleshipSearch {
 	public void horizontalSweepStrtegy(int[][] grid) {	
 		System.out.println("Strategy: Horizontal Sweep");
 		int total_searches = 1;				// number of searches
-		int a = 0;							//
+		int a = 0;							
 		int b = 0;
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid.length;j++) {
 				if (grid[i][j] != 0) {
-	                if (grid[i][j] == 1 & grid[i][j+4] ==1) {
+	                if (grid[i][j] == 1 & grid[i][j+4] ==1) {		// condition to find carrier coordinates
 	                	b = j+4;
 	                	// print carrier coordinates
 	                	System.out.println("Found Carrier at "+ "("+i +","+ j+") to ("+i +","+ b+")");
-	                	a++;
+	                	a++;					// increment counter
 	                }
-	                else if(grid[i][j] == 2 & grid[i][j+2] ==2) {
+	                else if(grid[i][j] == 2 & grid[i][j+2] ==2) {	// condition to find submarine coordinates
 	                	b =j+2;
 	                	// print submarine coordinate
 	                	System.out.println("Found Submarine at "+ "("+i +","+ j+") to ("+i +","+ b+")");
-	                	a++;
-	          
-	                	
+	                	a++;					// increment counter
 	                }
-				
-				
 				}
-				
-				
-				
 				total_searches++;		// increment number after each search
 				
 				// print number of cells searched
@@ -41,16 +34,12 @@ public class battleshipSearch {
 				}
 				
 			}
-			
-			
 		}
 		if(a==1) {
 			total_searches--;
 			
 			System.out.println("Number of cells searched "+ total_searches);
 		}
-		
-		
 	}
 
 	// Random Search Strategy
@@ -63,55 +52,36 @@ public class battleshipSearch {
 		Random rand =  new Random();
 		//int[][] result = new int[grid.length][grid.length];
 		while(c!=2) {
-		int r1 = rand.nextInt(24);			// 
-		int r2 = rand.nextInt(24);
+		int r1 = rand.nextInt(24);			// assign x coordinate randomly 
+		int r2 = rand.nextInt(24);			// assign y coordinate randomly 
 		int i = r1+4;
 		int j =r2+4;
-		if ((i <25) & (j <25)&(carr==0)) {
-		if((grid[r1][r2]==1 & grid[r1][r2+4]==1)|(grid[r1][r2]==1 & grid[r1+4][r2]==1)) {
-			c++;
-			int k =0;
-			k =r2+4;
-			// print carrier coordinates
-			System.out.println("Found carrier at "+ "("+r1 +","+ r2+") to ("+r1 +","+ k+")");
-			carr++;
-			
-			
-			
-		}
+		if ((i <25) & (j <25)&(carr==0)) {	// condition to find carrier coordinates
+			if((grid[r1][r2]==1 & grid[r1][r2+4]==1)|(grid[r1][r2]==1 & grid[r1+4][r2]==1)) {
+				c++;
+				int k =0;
+				k =r2+4;
+				// print carrier coordinates
+				System.out.println("Found carrier at "+ "("+r1 +","+ r2+") to ("+r1 +","+ k+")");
+				carr++;	
+			}
 		}
 		i = r1+2;
 		j =r2+2;
-		if ((i <25) & (j <25)&(subM==0)) {
-		if((grid[r1][r2]==2 & grid[r1][r2+2]==2)|(grid[r1][r2]==2 & grid[r1+2][r2]==2)) {
-			c++;
-			int k = 0;
-			k =r2+2;
-			// print submarine coordinates
-			System.out.println("Found submarine at "+ "("+r1 +","+ r2+") to ("+r1 +","+ k+")");
-			subM++;
-			
-			
-		}
-		}
-		total_searches_1++;
-	}
-		/*for (int p = 0; p < grid.length; p++) 
-		{
-			for (int q = 0; q < grid.length; q++) 
-			{
-				if(result[p][q] == 1)
-					carrierCoord.add(String.valueOf("("+p+","+q+")"));
-				else if(result[p][q] == 2)
-					submarineCoord.add(String.valueOf("("+p+","+q+")"));
-					
+		if ((i <25) & (j <25)&(subM==0)) {	// condition to find submarine coordinates
+			if((grid[r1][r2]==2 & grid[r1][r2+2]==2)|(grid[r1][r2]==2 & grid[r1+2][r2]==2)) {
+				c++;
+				int k = 0;
+				k =r2+2;
+				// print submarine coordinates
+				System.out.println("Found submarine at "+ "("+r1 +","+ r2+") to ("+r1 +","+ k+")");
+				subM++;
 			}
-		}*/
-		System.out.println("Number of cells Searched:"+total_searches_1);
-		//new PrintResult(carrierCoord,submarineCoord);
-		// print number of cells searched
-	//System.out.println("Number of cells searched "+ total_searches_1);
-
+		}
+		total_searches_1++;				// increment number of searches
+	}
+	// print number of cells searched
+	System.out.println("Number of cells searched "+ total_searches_1);
 }
 	
 // Strategic Search Strategy
